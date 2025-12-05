@@ -67,12 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
     fileInput.addEventListener('change', (e) => {
         if (e.target.files.length > 0) {
             // Simulate loading state
-            btnSelect.innerHTML = '<span class="material-symbols-outlined">hourglass_empty</span> Chargement...';
+            btnSelect.innerHTML = '<span class="material-symbols-outlined">hourglass_empty</span> Loading...';
 
             setTimeout(() => {
                 switchView('conversion');
                 // Reset button text
-                btnSelect.innerHTML = '<span class="material-symbols-outlined">folder_open</span> Sélectionner les fichiers';
+                btnSelect.innerHTML = '<span class="material-symbols-outlined">folder_open</span> Select files';
 
                 // Optional: Update file list in conversion view with selected files
                 // updateFileList(e.target.files); 
@@ -88,11 +88,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. Click on Convert (File) -> Simulate conversion
     btnConvert.addEventListener('click', () => {
         const originalText = btnConvert.innerHTML;
-        btnConvert.innerHTML = 'Conversion en cours...';
+        btnConvert.innerHTML = 'Converting...';
         btnConvert.style.opacity = '0.7';
 
         setTimeout(() => {
-            alert('Conversion terminée ! (Simulation)');
+            alert('Conversion complete! (Simulation)');
             btnConvert.innerHTML = originalText;
             btnConvert.style.opacity = '1';
             switchView('home');
@@ -102,16 +102,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Click on Convert (URL) -> Simulate conversion
     btnConvertUrl.addEventListener('click', () => {
         if (!urlInput.value) {
-            alert('Veuillez entrer une URL valide.');
+            alert('Please enter a valid URL.');
             return;
         }
 
         const originalText = btnConvertUrl.innerHTML;
-        btnConvertUrl.innerHTML = 'Traitement...';
+        btnConvertUrl.innerHTML = 'Processing...';
         btnConvertUrl.style.opacity = '0.7';
 
         setTimeout(() => {
-            alert('Vidéo téléchargée et convertie ! (Simulation)');
+            alert('Video downloaded and converted! (Simulation)');
             btnConvertUrl.innerHTML = originalText;
             btnConvertUrl.style.opacity = '1';
             switchView('home');
