@@ -1,15 +1,18 @@
 :root {
-    --bg-color: #000000;
+    --bg-color: #0a0a0a;
     --text-color: #ffffff;
     --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.05);
     --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-    --accent-color: #00d2ff;
-    --accent-gradient: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
-    --card-hover-bg: rgba(255, 255, 255, 0.08);
-    --btn-primary-bg: #e53935;
-    /* Red like iLovePDF but cleaner */
-    --btn-primary-hover: #d32f2f;
+
+    /* Emerald/Mint Theme based on reference */
+    --accent-color: #10B981;
+    /* Emerald 500 */
+    --accent-gradient: linear-gradient(135deg, #34D399 0%, #10B981 100%);
+    --card-hover-bg: rgba(16, 185, 129, 0.05);
+
+    --btn-primary-bg: #10B981;
+    --btn-primary-hover: #059669;
 }
 
 * {
@@ -20,14 +23,14 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background: #000000;
+    background: var(--bg-color);
     color: var(--text-color);
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
 }
 
-/* Background Blobs - Darker and more subtle */
+/* Background Blobs - Deep Emerald & Dark Slate */
 .background-blobs {
     position: fixed;
     top: 0;
@@ -42,9 +45,9 @@ body {
 .blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.2;
-    /* Reduced opacity */
+    filter: blur(80px);
+    opacity: 0.15;
+    /* Subtle */
     animation: float 15s infinite ease-in-out alternate;
 }
 
@@ -53,8 +56,8 @@ body {
     left: -10%;
     width: 600px;
     height: 600px;
-    background: #4a148c;
-    /* Dark Purple */
+    background: #064E3B;
+    /* Dark Emerald */
 }
 
 .blob-2 {
@@ -62,8 +65,8 @@ body {
     right: -10%;
     width: 700px;
     height: 700px;
-    background: #0d47a1;
-    /* Dark Blue */
+    background: #065F46;
+    /* Deep Teal */
     animation-delay: -5s;
 }
 
@@ -72,8 +75,9 @@ body {
     left: 40%;
     width: 500px;
     height: 500px;
-    background: #006064;
-    /* Dark Cyan */
+    background: #10B981;
+    /* Primary Emerald */
+    opacity: 0.1;
     animation-duration: 20s;
 }
 
@@ -93,7 +97,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 5%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(10, 10, 10, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--glass-border);
@@ -117,7 +121,7 @@ body {
 }
 
 .glass-btn {
-    background: var(--glass-bg);
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--glass-border);
     color: white;
     padding: 0.5rem;
@@ -130,7 +134,7 @@ body {
 }
 
 .glass-btn:hover {
-    background: var(--card-hover-bg);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 /* Main Content & Views */
@@ -177,6 +181,7 @@ main {
 
 .gradient-text {
     background: var(--accent-gradient);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -193,45 +198,42 @@ main {
 }
 
 .glass-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: #111;
+    /* Darker card background */
     border: 1px solid var(--glass-border);
     border-radius: 24px;
     padding: 3rem 2rem;
-    /* More padding */
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    /* Entire card clickable */
 }
 
 .glass-card::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-    transition: 0.6s;
+    background: radial-gradient(circle at center, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: 0.4s;
 }
 
 .glass-card:hover::before {
-    left: 100%;
+    opacity: 1;
 }
 
 .glass-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    background: var(--card-hover-bg);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+    border-color: rgba(16, 185, 129, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .icon-wrapper {
@@ -241,6 +243,7 @@ main {
     gap: 0.5rem;
     color: var(--accent-color);
     transition: transform 0.3s ease;
+    z-index: 1;
 }
 
 .glass-card:hover .icon-wrapper {
@@ -253,7 +256,7 @@ main {
 
 .icon-wrapper .arrow {
     font-size: 1.5rem;
-    opacity: 0.6;
+    opacity: 0.4;
     color: white;
 }
 
@@ -261,6 +264,7 @@ main {
     font-size: 1.25rem;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.9);
+    z-index: 1;
 }
 
 /* Upload View (Minimalist) */
@@ -288,7 +292,8 @@ main {
 
 .btn-select-file {
     background: var(--btn-primary-bg);
-    color: white;
+    color: #000;
+    /* Black text on green button for contrast */
     padding: 1.2rem 3rem;
     border-radius: 12px;
     font-size: 1.2rem;
@@ -299,13 +304,13 @@ main {
     display: flex;
     align-items: center;
     gap: 1rem;
-    box-shadow: 0 10px 20px rgba(229, 57, 53, 0.3);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
 }
 
 .btn-select-file:hover {
     background: var(--btn-primary-hover);
     transform: translateY(-2px);
-    box-shadow: 0 15px 30px rgba(229, 57, 53, 0.4);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
 }
 
 .drop-zone-text {
@@ -330,8 +335,8 @@ main {
 }
 
 .file-item {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     padding: 1.5rem;
     display: flex;
@@ -342,8 +347,7 @@ main {
 
 .file-icon {
     font-size: 2.5rem;
-    color: #4caf50;
-    /* Green for file present */
+    color: var(--accent-color);
 }
 
 .file-info {
@@ -363,7 +367,7 @@ main {
 
 .btn-convert {
     background: var(--btn-primary-bg);
-    color: white;
+    color: #000;
     padding: 1rem 2.5rem;
     border-radius: 50px;
     font-size: 1.1rem;
