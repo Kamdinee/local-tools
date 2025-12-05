@@ -146,13 +146,26 @@
                     Select files
                 </button>
                 <input type="file" id="file-input" multiple style="display: none;">
-                <p class="drop-zone-text">or drop files here</p>
+                <div class="file-list">
+                    <div class="file-item">
+                        <span class="material-symbols-outlined file-icon">description</span>
+                        <div class="file-info">
+                            <div class="file-name">example_document.pdf</div>
+                            <div class="file-size">1.2 MB</div>
+                        </div>
+                        <span class="material-symbols-outlined" style="cursor:pointer; opacity:0.5">close</span>
+                    </div>
+                </div>
+
+                <button class="btn-convert" id="btn-convert">
+                    Convert to <span id="target-format">WORD</span>
+                    <span class="material-symbols-outlined">arrow_circle_right</span>
+                </button>
             </div>
         </div>
-
         <!-- URL View -->
         <div id="url-view" class="view-section">
-            <div class="upload-container">
+            <div class="upload-container" id="url-input-container">
                 <h2 class="upload-title" id="url-title">YouTube to MP4</h2>
                 <p class="upload-subtitle">Paste the video link to convert.</p>
 
@@ -161,6 +174,47 @@
                     <button class="btn-convert-url" id="btn-convert-url">
                         Convert
                         <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Loading Container -->
+            <div class="loading-container" id="loading-container" style="display: none;">
+                <div class="loader-circle">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45"></circle>
+                    </svg>
+                </div>
+                <h3 class="loading-status">Converting video...</h3>
+                <div class="progress-bar-wrapper">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <p class="progress-text" id="progress-text">0%</p>
+            </div>
+
+            <!-- Result Container -->
+            <div class="result-container" id="result-container" style="display: none;">
+                <div class="video-card glass-card">
+                    <div class="thumbnail-wrapper">
+                        <img src="" alt="Video Thumbnail" id="video-thumbnail" class="video-thumbnail">
+                        <div class="play-icon">
+                            <span class="material-symbols-outlined">play_arrow</span>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 id="video-title" class="video-title">Video Title</h3>
+                        <p id="video-author" class="video-author">Channel Name</p>
+                        <div class="video-meta">
+                            <span class="badge">MP4</span>
+                            <span class="badge" id="video-quality">1080p</span>
+                        </div>
+                    </div>
+                    <button class="btn-download" id="btn-download">
+                        <span class="material-symbols-outlined">download</span>
+                        Download Video
+                    </button>
+                    <button class="btn-convert-another" id="btn-convert-another">
+                        Convert Another
                     </button>
                 </div>
             </div>
